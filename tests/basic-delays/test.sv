@@ -9,13 +9,19 @@ module t (/*AUTOARG*/
    int  cyc;
 
    initial begin
+      // NOTE: the delays at the beginning of the threads that only print some
+      // output are on purpos "out of phase" with the clock generation.
+      // This way the order of the $write output is guaranteed. If two $write
+      // calls occured at the same simulation time, any order would be
+      // acceptable
+      #5;
       $write("Simple 1\n");
       #50;
       $write("Simple 1 post delay\n");
    end
 
    initial begin
-      #70;
+      #75;
       $write("Simple 2\n");
       #70;
       $write("Simple 2 post delay\n");
@@ -24,7 +30,7 @@ module t (/*AUTOARG*/
    initial begin
       clk_generated = 1;
       forever begin
-         #5 clk_generated = ~clk_generated;
+         #10 clk_generated = ~clk_generated;
       end
    end
 
