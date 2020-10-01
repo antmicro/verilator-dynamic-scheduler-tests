@@ -18,6 +18,17 @@ CPP_MAIN="$TEST_DIR/vmain.cpp"
 SV_MAIN="$TEST_DIR/test.sv"
 EXPECTED_OUT="$TEST_DIR/test.out"
 
+function check_file() {
+  if [[ ! -e "$1" ]]; then
+    echo "$2 for $TEST_NAME missing"
+    exit 1
+  fi
+}
+
+check_file "$CPP_MAIN" "CPP source"
+check_file "$SV_MAIN" "SV source"
+check_file "$EXPECTED_OUT" "Expected output"
+
 OUT_DIR="$SCRIPT_DIR/out/$TEST_NAME"
 ACTUAL_OUT="$OUT_DIR/output"
 
