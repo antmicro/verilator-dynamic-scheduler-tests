@@ -1,0 +1,4 @@
+[submodule "verilator"]
+	path = verilator
+	url = git@github.com:antmicro/verilator-1.git
+	branch = dynamic-scheduler
