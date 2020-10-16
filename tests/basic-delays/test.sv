@@ -28,7 +28,6 @@ module t (/*AUTOARG*/
    end
 
    initial begin
-      clk_generated = 1;
       forever begin
          #10 clk_generated = ~clk_generated;
       end
