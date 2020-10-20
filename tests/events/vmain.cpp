@@ -16,10 +16,7 @@ int main(int argc, char *argv[]) {
 
 	while (!Verilated::gotFinish()) {
 		if (main_time != -1) {
-			//for (int i = 0; i < 100; ++i) {
-				//usleep(100);
-				top->eval();
-			//}
+			top->eval();
 		}
 		main_time = top->timeSlotsEarliestTime();
 	}
