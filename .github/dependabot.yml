@@ -1,8 +1,6 @@
-version: 1
-update_configs:
-  - package_manager: "submodules"
+version: 2
+updates:
+  - package-ecosystem: "gitsubmodule"
     directory: "/"
-    update_schedule: "weekly"
-    automerged_updates:
-    - match:
-        dependency_name: "*"
+    schedule:
+      interval: "weekly"
