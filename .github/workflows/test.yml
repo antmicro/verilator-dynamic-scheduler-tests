@@ -14,10 +14,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install libfl-dev
+        sudo apt-get install libfl-dev git
     - name: Build Verilator
       run: |
         cd verilator
+        git show
         autoconf
         ./configure
         make -j$(nproc)
