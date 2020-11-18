@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+rm -rf out
+
 TESTS=$(ls tests/)
 
 #echo $TESTS
