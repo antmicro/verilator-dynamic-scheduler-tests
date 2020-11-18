@@ -17,7 +17,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install libfl-dev git
+        sudo apt-get install gcc-10 g++-10
     - name: Build Verilator
+      env:
+        CC: gcc-10
+        CXX: g++-10
       run: |
         cd verilator
         git show
@@ -29,8 +33,14 @@ jobs:
       run: |
         verilator --version
     - name: Dedicated tests
+      env:
+        CC: gcc-10
+        CXX: g++-10
       run: ./test_all.sh
     - name: Built-in regression tests
+      env:
+        CC: gcc-10
+        CXX: g++-10
       run: |
         cd verilator/test_regress
         make test -j$(nproc)
