@@ -22,6 +22,9 @@ jobs:
         ./configure
         make -j$(nproc)
         sudo make install
+    - name: Verilator version
+      run: |
+        verilator --version
     - name: Dedicated tests
       run: ./test_all.sh
     - name: Built-in regression tests
