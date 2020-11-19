@@ -32,13 +32,22 @@ jobs:
     - name: Verilator version
       run: |
         verilator --version
-    - name: Dedicated tests
+
+    - name: Generate Robot tests
       env:
         CC: gcc-10
         CXX: g++-10
-      run: ./test_all.sh
-    - name: Built-in regression tests
+      run: ./gen_robot.py
+    - name: Run Robot tests
       env:
         CC: gcc-10
         CXX: g++-10
-      run: ./regression_tests.sh verilator/test_regress
+      run: robot all_tests.robot
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: robot_logs
+        path: |
+          report.hml
+          output.xml
+          log.html

@@ -1,1 +1,4 @@
 out
+all_tests.robot
+*xml
+*html
