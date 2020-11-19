@@ -18,6 +18,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install libfl-dev git
         sudo apt-get install gcc-10 g++-10
+        sudo apt install python3-pip
+        sudo pip3 install robotframework
+
     - name: Build Verilator
       env:
         CC: gcc-10
