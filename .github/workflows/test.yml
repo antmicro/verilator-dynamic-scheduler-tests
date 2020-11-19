@@ -41,6 +41,4 @@ jobs:
       env:
         CC: gcc-10
         CXX: g++-10
-      run: |
-        cd verilator/test_regress
-        make test -j$(nproc)
+      run: ./regression_tests.sh
