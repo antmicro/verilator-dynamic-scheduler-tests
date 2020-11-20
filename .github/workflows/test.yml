@@ -16,6 +16,7 @@ jobs:
         submodules: 'recursive'
         fetch-depth: 0
         clean: false
+
     - name: Install dependencies
       run: |
         sudo apt-get update
@@ -59,7 +60,7 @@ jobs:
           output.xml
           log.html
 
-    - name: Prepare Deploy
+    - name: Deploy
       run: |
         mkdir deploy
         mv report.html output.xml log.html deploy
