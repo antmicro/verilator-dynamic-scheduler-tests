@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 pushd verilator/test_regress
 
 function run() {
@@ -8,4 +10,3 @@ function run() {
 }
 
 run "$TEST_PATH"
-popd
