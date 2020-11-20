@@ -46,7 +46,7 @@ make -C "$OUT_DIR" -f Vtop.mk
 # RUN #
 #######
 
-$OUT_DIR/vmain > "$ACTUAL_OUT"
+$OUT_DIR/vmain | tee "$ACTUAL_OUT"
 
 ##########
 # VERIFY #
