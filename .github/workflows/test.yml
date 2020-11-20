@@ -51,6 +51,6 @@ jobs:
       with:
         name: robot_logs
         path: |
-          report.hml
+          report.html
           output.xml
           log.html
