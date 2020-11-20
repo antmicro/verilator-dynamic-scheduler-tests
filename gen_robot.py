@@ -15,10 +15,10 @@ with open("templates/buitin.robot", "r") as t:
 
 test_cases = []
 
-for t in glob("tests/*"):
+for t in sorted(glob("tests/*")):
     test_cases.append(dedicated.render(test=t))
 
-for t in glob("verilator/test_regress/t/t_*pl"):
+for t in sorted(glob("verilator/test_regress/t/t_*pl")):
     t = t[len("verilator/test_regress/"):]
     test_cases.append(builtin.render(test=t))
 
