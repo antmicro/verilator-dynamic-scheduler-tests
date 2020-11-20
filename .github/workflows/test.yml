@@ -1,6 +1,8 @@
 name: Dynamic Scheduler Tests
 
-on: [push, pull_request]
+on: push
+  branches:
+    - master
 
 jobs:
   build:
@@ -36,21 +38,41 @@ jobs:
       run: |
         verilator --version
 
-    - name: Generate Robot tests
+    - name: Generate Robot Tests
       env:
         CC: gcc-10
         CXX: g++-10
       run: ./gen_robot.py
-    - name: Run Robot tests
+    - name: Run Robot Tests
       env:
         CC: gcc-10
         CXX: g++-10
       run: robot all_tests.robot || true
 
-    - uses: actions/upload-artifact@v2
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
       with:
         name: robot_logs
         path: |
           report.html
           output.xml
           log.html
+
+    - name: Prepare Deploy
+      run: |
+        mkdir deploy
+        mv report.html output.xml log.html deploy
+        touch deploy/.nojekyll
+        echo '<head> <meta http-equiv="refresh" content="0; url=report.html" /> </head>' > deploy/index.html
+    - name: Install SSH Client 🔑
+      uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+    - name: Deploy 🚀
+      if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' }}
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        SSH: true
+        BRANCH: gh-pages
+        FOLDER: deploy
+        CLEAN: true
