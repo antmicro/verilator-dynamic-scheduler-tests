@@ -1,9 +1,6 @@
 name: Dynamic Scheduler Tests
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
@@ -61,6 +58,7 @@ jobs:
           log.html
 
     - name: Deploy
+      if: github.ref == 'refs/heads/master'
       run: |
         mkdir deploy
         mv report.html output.xml log.html deploy
