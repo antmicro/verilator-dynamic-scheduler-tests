@@ -7,19 +7,20 @@ module t (/*AUTOARG*/
    event ping;
    event pong;
 
-   initial begin
-      # 100;
-       ->pong;
 
+   initial begin
        forever begin
-           $write("ping\n");
            @ping;
+           $write("ping\n");
            ->pong;
        end
    end
 
    initial begin
        int cnt;
+       # 100;
+       ->ping;
+
        forever begin
            @pong;
            $write("pong\n");
