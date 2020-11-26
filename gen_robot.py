@@ -16,10 +16,14 @@ with open("templates/buitin.robot", "r") as t:
 test_cases = []
 
 for t in sorted(glob("tests/*")):
-    test_cases.append(dedicated.render(test=t))
+    test_cases.append(dedicated.render(test=t, tags="should_pass"))
 
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
     t = t[len("verilator/test_regress/"):]
+    if "bad" in t:
+        tags = "should_fail"
+    else:
+        tags = "should_pass"
     test_cases.append(builtin.render(test=t))
 
 with open("all_tests.robot", "w") as t:
