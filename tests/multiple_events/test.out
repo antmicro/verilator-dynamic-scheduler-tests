@@ -1,0 +1,13 @@
+Will trigger event A in #100
+Waiting for event A, B, or C...
+Triggering event A!
+Will trigger event B in #100
+Got the event!
+Waiting for event A, B, or C...
+Triggering event B!
+Will trigger event C in #100
+Got the event!
+Waiting for event A, B, or C...
+Triggering event C!
+Got the event!
+*-* All Finished *-*
