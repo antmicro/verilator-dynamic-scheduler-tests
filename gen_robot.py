@@ -24,7 +24,7 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
         tags = "should_fail"
     else:
         tags = "should_pass"
-    test_cases.append(builtin.render(test=t))
+    test_cases.append(builtin.render(test=t, tags=tags))
 
 with open("all_tests.robot", "w") as t:
     t.write(suite.render(test_cases="\n".join(test_cases)))
