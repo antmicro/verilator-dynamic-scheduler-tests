@@ -14,7 +14,7 @@ with open("templates/buitin.robot", "r") as t:
     builtin = Template(t.read())
 
 test_cases = []
-timeout = "900s"
+timeout = "300s"
 
 for t in sorted(glob("tests/*")):
     test_cases.append(dedicated.render(test=t,
