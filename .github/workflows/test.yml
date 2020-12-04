@@ -46,7 +46,7 @@ jobs:
       env:
         CC: gcc-10
         CXX: g++-10
-      run: pabot --verbose --testlevelsplit --noncritical should_fail robot_tests || true
+      run: pabot --processes 8 --verbose --testlevelsplit --noncritical should_fail robot_tests || true
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
