@@ -17,7 +17,7 @@ with open("templates/builtin.robot", "r") as t:
     builtin = Template(t.read())
 
 test_cases = []
-timeout = "300s"
+timeout = "900s"
 
 try:
     os.makedirs("robot_tests/dedicated", exist_ok=True)
