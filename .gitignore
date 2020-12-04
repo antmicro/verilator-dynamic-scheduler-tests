@@ -2,3 +2,4 @@ out
 all_tests.robot
 *xml
 *html
+robot_tests
