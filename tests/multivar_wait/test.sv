@@ -31,15 +31,17 @@ module t (/*AUTOARG*/
    end
 
    initial begin
-     #10
+     #10;
      $write("Waiting for a > b...\n");
      ->cont;
      wait(a > b);
      $write("Waited for a > b.\n");
+     #10;
      $write("Waiting for a + b < c...\n");
      ->cont;
      wait(a + b < c);
      $write("Waited for value a + b < c.\n");
+     #10;
      $write("Waiting for a < b && b > c...\n");
      ->cont;
      wait(a < b && b > c);
