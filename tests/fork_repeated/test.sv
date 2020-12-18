@@ -23,7 +23,6 @@ module t;
     f();
     f();
     wait(count == 9);
-    #1000000;
     $write("*-* All Finished *-*\n");
     $finish();
   end

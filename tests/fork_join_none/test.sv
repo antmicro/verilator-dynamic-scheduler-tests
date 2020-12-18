@@ -7,7 +7,7 @@ module t (/*AUTOARG*/
    initial begin
       fork
          begin
-            #1000000;
+            #1;
             $write("forked process\n");
             $write("*-* All Finished *-*\n");
             $finish;

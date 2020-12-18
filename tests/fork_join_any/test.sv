@@ -17,6 +17,7 @@ module t (/*AUTOARG*/
             $finish;
          end
       join_any
+      #1;
       $write("main process\n");
       ->cont;
    end
