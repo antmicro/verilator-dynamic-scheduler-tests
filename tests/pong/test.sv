@@ -11,6 +11,7 @@ module t (/*AUTOARG*/
    initial begin
        forever begin
            @ping;
+           #1;
            $write("ping\n");
            ->pong;
        end
@@ -23,6 +24,7 @@ module t (/*AUTOARG*/
 
        forever begin
            @pong;
+           #1;
            $write("pong\n");
            cnt++;
            if (cnt >= 10) begin
