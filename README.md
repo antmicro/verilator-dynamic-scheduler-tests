@@ -5,5 +5,5 @@ Usage:
 
 ```
 $ python3 gen_robot.py
-$ robot all_tests.robot
+$ robot --noncritical should_fail robot_tests
 ```
