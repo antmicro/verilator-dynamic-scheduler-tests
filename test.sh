@@ -48,7 +48,15 @@ make -C "$OUT_DIR" -f Vtop.mk
 # RUN #
 #######
 
-$OUT_DIR/vmain | tee "$ACTUAL_OUT"
+if [[ -z "$2" ]]; then
+  $OUT_DIR/vmain | tee "$ACTUAL_OUT"
+else
+  for i in $(seq 1 $2); do
+    echo "==> Test run $i"
+    $OUT_DIR/vmain | tee "$ACTUAL_OUT"
+    echo -n
+  done
+fi
 
 ##########
 # VERIFY #

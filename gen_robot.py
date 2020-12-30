@@ -18,6 +18,14 @@ with open("templates/builtin.robot", "r") as t:
 test_cases = []
 timeout = "900s"
 
+if len(sys.argv) > 1:
+    timeout_arg = sys.argv[1]
+    if timeout_arg.isnumeric():
+        timeout = timeout_arg + "s"
+    else:
+        print(f"Usage: {sys.argv[0]} [timeout in seconds]")
+        exit(1)
+
 try:
     os.makedirs("robot_tests/dedicated", exist_ok=True)
     os.makedirs("robot_tests/builtin", exist_ok=True)
