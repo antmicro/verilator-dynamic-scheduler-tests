@@ -67,7 +67,7 @@ jobs:
       if: github.ref == 'refs/heads/master'
       run: |
         mkdir deploy
-        mv report.html output.xml log.html deploy
+        mv report.html output.xml log.html diff.log deploy
         touch deploy/.nojekyll
         echo '<head> <meta http-equiv="refresh" content="0; url=report.html" /> </head>' > deploy/index.html
         cd deploy
