@@ -51,7 +51,7 @@ jobs:
     - name: Show Diff In Results
       run: |
         git fetch origin gh-pages
-        ./compare-robot-logs.py <(git show origin/gh-pages:output.xml) output.xml | tee diff.log
+        ./compare_robot_logs.py <(git show origin/gh-pages:output.xml) output.xml | tee diff.log
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
