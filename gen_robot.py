@@ -45,7 +45,11 @@ with open("robot_tests/dedicated.robot", "w") as t:
 test_cases = []
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
     t = t[len("verilator/test_regress/"):]
-    if "bad" in t:
+    if t in {"t/t_case_huge.pl", "t/t_case_huge_prof.pl", "t/t_dedupe_clk_gate.pl", "t/t_merge_cond.pl", "t/t_var_life.pl", "t/t_mem_shift.pl"}:
+        tags = "opt"
+    elif "t/t_dist_" in t:
+        tags = "dist"
+    elif "bad" in t:
         tags = "should_fail"
     else:
         tags = "should_pass"
