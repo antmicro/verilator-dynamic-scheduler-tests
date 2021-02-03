@@ -21,7 +21,11 @@ line
 for TEST in $TESTS; do
   TOTAL=$((TOTAL + 1))
 
-  ./test.sh "tests/$TEST" 2>&1 > /dev/null
+  if [[ $TEST == "prot_lib" ]]; then
+    ./test_prot_lib.sh 2>&1 > /dev/null
+  else
+    ./test.sh "tests/$TEST" 2>&1 > /dev/null
+  fi
 
   if [[ $? -eq 0 ]]; then
     printf "%-50s %30s\n" "$TEST" "OK"

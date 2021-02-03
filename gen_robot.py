@@ -11,6 +11,9 @@ with open("templates/suite.robot", "r") as t:
 with open("templates/dedicated.robot", "r") as t:
     dedicated = Template(t.read())
 
+with open("templates/dedicated_prot_lib.robot", "r") as t:
+    dedicated_prot_lib = Template(t.read())
+
 with open("templates/builtin.robot", "r") as t:
     builtin = Template(t.read())
 
@@ -33,8 +36,12 @@ except Exception as e:
     sys.exit(1)
 
 for t in sorted(glob("tests/*")):
-    test_cases.append(
-        dedicated.render(test=t, tags="should_pass", timeout=timeout))
+    if t == "prot_lib":
+        test_cases.append(
+            dedicated_prot_lib.render(tags="should_pass", timeout=timeout))
+    else:
+        test_cases.append(
+            dedicated.render(test=t, tags="should_pass", timeout=timeout))
 
 with open("robot_tests/dedicated.robot", "w") as t:
     t.write(suite.render(test_cases="\n".join(test_cases)))
