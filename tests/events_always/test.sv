@@ -35,6 +35,7 @@ module t(/*AUTOARG*/
       end
       else if (cyc == 2) begin
          -> e1;
+         if (!e1.triggered) $stop;
       end
       else if (cyc == 3) begin
          if (last_event != 32'b10) $stop;
