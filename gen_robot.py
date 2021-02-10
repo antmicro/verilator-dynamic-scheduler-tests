@@ -47,7 +47,7 @@ tests_opt = [
 
 # tests related to performance, sometimes fail in the CI but not on a regular
 # machine
-tests_perf = ["t/t_a3_selftest.pl"]
+tests_perf = ["t/t_a3_selftest.pl", "t/t_debug_graph_test.pl"]
 
 test_cases = []
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
