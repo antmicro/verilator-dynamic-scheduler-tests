@@ -51,18 +51,23 @@ tests_perf = ["t/t_a3_selftest.pl", "t/t_debug_graph_test.pl"]
 
 test_cases = []
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
+    tags = []
+
     t = t[len("verilator/test_regress/"):]
+
     if t in tests_opt:
-        tags = "opt"
-    elif "t/t_dist_" in t:
-        tags = "dist"
-    elif t in tests_perf:
-        tags = "perf"
-    elif "bad" in t:
-        tags = "should_fail"
+        tags.append("opt")
+    if "t/t_dist_" in t:
+        tags.append("dist")
+    if t in tests_perf:
+        tags.append("perf")
+
+    if "bad" in t:
+        tags.append("should_fail")
     else:
-        tags = "should_pass"
-    test_cases.append(builtin.render(test=t, tags=tags, timeout=timeout))
+        tags.append("should_pass")
+
+    test_cases.append(builtin.render(test=t, tags="    ".join(tags), timeout=timeout))
 
 with open("robot_tests/builtin.robot", "w") as t:
     t.write(suite.render(test_cases="\n".join(test_cases)))
