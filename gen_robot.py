@@ -59,7 +59,7 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
         tags.append("opt")
     if "t/t_dist_" in t:
         tags.append("dist")
-    if t in tests_perf:
+    if t in tests_perf or "bench" in t:
         tags.append("perf")
 
     if "bad" in t:
