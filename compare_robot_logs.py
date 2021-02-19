@@ -4,6 +4,7 @@
 import xml.etree.ElementTree as et
 import sys
 
+
 def usage():
     print(f"Usage: {sys.argv[0]} <base_output.xml> <new_output.xml>")
 
@@ -22,9 +23,12 @@ def get_results(data):
     tags = {}
     for t in tests:
         results[t.get("name")] = t.findall("status")[0].get("status") == "PASS"
-        tags[t.get("name")] = [e.text for e in t.findall("tags")[0].findall("tag")]
+        tags[t.get("name")] = [
+            e.text for e in t.findall("tags")[0].findall("tag")
+        ]
 
     return results, tags
+
 
 base_results, base_tags = get_results(base)
 new_results, new_tags = get_results(new)
@@ -60,10 +64,12 @@ for t in all_tests:
 
     col_size = max(col_size, len(t))
 
+
 def dump(hdr, tests):
     print(hdr)
     for t in tests:
         print(f"  * {t:<{col_size}}\t[{', '.join(tags[t])}]")
+
 
 dump("New tests:", new_tests)
 dump("Missing tests:", missing)
