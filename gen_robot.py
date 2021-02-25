@@ -117,6 +117,12 @@ tests_grep = [
     "t/t_func_dotted_inl2.pl", "t/t_foreach.pl"
 ]
 
+# tests that generate verilog debug outupts and compares with
+# already hardcoded files
+tests_code_gen = [
+    "t/t_debug_emitv.pl"
+]
+
 test_cases = []
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
     tags = []
@@ -134,6 +140,9 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
 
     if t in tests_grep:
         tags.append("file_grep")
+    
+    if t in tests_code_gen:
+        tags.append("code_gen")
 
     if "bad" in t:
         tags.append("should_fail")
