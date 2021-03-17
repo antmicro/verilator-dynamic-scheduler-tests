@@ -44,9 +44,9 @@ verilator --output-split-cfuncs 1 --cc "$SV_MAIN" -Mdir "$OUT_DIR" --prefix Vtop
 
 make -C "$OUT_DIR" -f Vtop.mk
 
-#######
-# RUN #
-#######
+################
+# RUN & VERIFY #
+################
 
 if [[ -z "$2" ]]; then
   $OUT_DIR/vmain | tee "$ACTUAL_OUT"
@@ -55,14 +55,9 @@ else
     echo "==> Test run $i"
     $OUT_DIR/vmain | tee "$ACTUAL_OUT"
     echo -n
+    if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
+      echo "Output is different than expected!"
+      exit 1
+    fi
   done
-fi
-
-##########
-# VERIFY #
-##########
-
-if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
-  echo "Output is different than expected!"
-  exit 1
 fi
