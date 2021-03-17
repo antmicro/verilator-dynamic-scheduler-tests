@@ -6,7 +6,7 @@ Waited for a > b.
 Waiting for a + b < c...
 Assigning 3 to c.
 Assigning 4 to c.
-Waited for value a + b < c.
+Waited for a + b < c.
 Waiting for a < b && b > c...
 Assigning 5 to b.
 Waited for a < b && b > c.

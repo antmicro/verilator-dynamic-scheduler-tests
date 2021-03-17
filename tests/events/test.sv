@@ -6,7 +6,7 @@ module t (/*AUTOARG*/
    event m_event;
 
    initial begin
-     #100;
+     #1;
      $write("Will trigger the event in #100\n");
      #100;
      $write("triggering!\n");
@@ -14,7 +14,6 @@ module t (/*AUTOARG*/
    end
 
    initial begin
-     #10
      $write("Will wait for the event here...\n");
      @m_event;
      $write("Got the event!\n");
