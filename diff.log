@@ -1,0 +1,15 @@
+New tests:
+Missing tests:
+New passing tests:
+  * t/t_fork_bbox.pl       	[builtin, should_pass]
+  * tests/fork_join_any    	[dedicated, should_pass]
+  * t/t_fork.pl            	[builtin, should_pass]
+  * tests/fork_join_none   	[dedicated, should_pass]
+  * t/t_a3_selftest.pl     	[builtin, perf, should_pass]
+  * t/t_fork_label.pl      	[builtin, should_pass]
+  * tests/fork_repeated    	[dedicated, should_pass]
+  * tests/fork_events      	[dedicated, should_pass]
+  * t/t_dist_portability.pl	[builtin, dist, should_pass]
+  * t/t_dist_whitespace.pl 	[builtin, dist, should_pass]
+New failing tests:
+  * tests/pong             	[dedicated, should_pass]
