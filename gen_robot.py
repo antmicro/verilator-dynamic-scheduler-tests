@@ -60,7 +60,7 @@ tests_perf = [
     "t/t_interface_gen7_noinl.pl", "t_inst_tree_inl0_pub0.pl",
     "t_inst_tree_inl0_pub1.pl", "t/t_inst_tree_inl0_pub1_norelcfuncs.pl",
     "t/t_inst_tree_inl1_pub1.pl", "t/t_final.pl", "t/t_gen_genblk_noinl.pl",
-    "t/t_gate_chained.pl"
+    "t/t_gate_chained.pl", "t/t_flag_csplit_eval.pl"
 ]
 
 # tests that use $file_grep, they either look for some optimizations, specific
