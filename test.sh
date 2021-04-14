@@ -40,7 +40,7 @@ mkdir -p $OUT_DIR
 # BUILD #
 #########
 
-verilator --output-split-cfuncs 1 --cc "$SV_MAIN" -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN" -LDFLAGS "-lpthread" -CFLAGS "-DVL_THREADED"
+verilator --output-split-cfuncs 1 --cc "$SV_MAIN" -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
 
 make -C "$OUT_DIR" -f Vtop.mk
 
