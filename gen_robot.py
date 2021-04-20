@@ -120,7 +120,8 @@ tests_grep = [
 # tests that generate verilog debug outupts and compares with
 # already hardcoded files
 tests_code_gen = [
-    "t/t_debug_emitv.pl"
+    "t/t_debug_emitv.pl", 
+    "t/t_cover_line_trace.pl"
 ]
 
 test_cases = []
