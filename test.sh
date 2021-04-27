@@ -50,6 +50,11 @@ make -C "$OUT_DIR" -f Vtop.mk
 
 if [[ -z "$2" ]]; then
   $OUT_DIR/vmain | tee "$ACTUAL_OUT"
+  echo -n
+  if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
+    echo "Output is different than expected!"
+    exit 1
+  fi
 else
   for i in $(seq 1 $2); do
     echo "==> Test run $i"
