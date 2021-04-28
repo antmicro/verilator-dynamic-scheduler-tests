@@ -1,0 +1,10 @@
+[0] start; clk == 0
+[1] any edge; clk == 1
+[2] any edge; clk == 0
+[4] negedge; clk == 0
+[6] negedge; clk == 0
+[7] posedge; clk == 1
+[9] posedge; clk == 1
+[10] posedge or negedge; clk == 0
+[11] posedge or negedge; clk == 1
+*-* All Finished *-*
