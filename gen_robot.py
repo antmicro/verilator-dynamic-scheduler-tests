@@ -44,11 +44,12 @@ tests_opt = [
     "t/t_case_huge.pl", "t/t_case_huge_prof.pl", "t/t_dedupe_clk_gate.pl",
     "t/t_merge_cond.pl", "t/t_var_life.pl", "t/t_mem_shift.pl",
     "t/t_inst_tree_inl0_pub1.pl", "t/t_inst_tree_inl0_pub1_norelcfuncs.pl",
-    "t_unopt_combo_isolate_vlt.pl", "t_alw_splitord.pl", "t_cellarray.pl",
-    "t_reloop_cam.pl", "t_alw_split.pl", "t_alw_reorder.pl", "t_merge_cond.pl",
-    "t_dedupe_seq_logic.pl", "t_alw_split_rst.pl", "t_clk_gater.pl",
-    "t_alw_nosplit.pl", "t_gate_chained.pl", "t_alw_noreorder.pl",
-    "t_unopt_combo_isolate.pl"
+    "t/t_unopt_combo_isolate_vlt.pl", "t/t_alw_splitord.pl", "t/t_cellarray.pl",
+    "t/t_reloop_cam.pl", "t/t_reloop_offset.pl", "t/t_reloop_offset_lim_63.pl",
+    "t/t_alw_split.pl", "t/t_alw_reorder.pl", "t/t_merge_cond.pl",
+    "t/t_dedupe_seq_logic.pl", "t/t_alw_split_rst.pl", "t/t_clk_gater.pl",
+    "t/t_alw_nosplit.pl", "t/t_gate_chained.pl", "t/t_alw_noreorder.pl",
+    "t/t_unopt_combo_isolate.pl"
 ]
 
 # tests related to performance, sometimes fail in the CI but not on a regular
@@ -57,8 +58,8 @@ tests_perf = [
     "t/t_a3_selftest.pl", "t/t_debug_graph_test.pl", "t/t_case_huge.pl",
     "t/t_case_huge_prof.pl", "t/t_unopt_array_csplit.pl", "t/t_split_var_0.pl",
     "t/t_split_var_2_trace.pl", "t/t_math_signed.pl",
-    "t/t_interface_gen7_noinl.pl", "t_inst_tree_inl0_pub0.pl",
-    "t_inst_tree_inl0_pub1.pl", "t/t_inst_tree_inl0_pub1_norelcfuncs.pl",
+    "t/t_interface_gen7_noinl.pl", "t/t_inst_tree_inl0_pub0.pl",
+    "t/t_inst_tree_inl0_pub1.pl", "t/t_inst_tree_inl0_pub1_norelcfuncs.pl",
     "t/t_inst_tree_inl1_pub1.pl", "t/t_final.pl", "t/t_gen_genblk_noinl.pl",
     "t/t_gate_chained.pl", "t/t_flag_csplit_eval.pl"
 ]
@@ -73,7 +74,8 @@ tests_grep = [
     "t/t_mem_shift.pl", "t/t_func_dotted_inl2_vlt.pl",
     "t/t_trace_complex_structs.pl", "t/t_var_pins_sc2.pl",
     "t/t_split/t_var_2_trace.pl", "t/t_hier_block_nohier.pl",
-    "t/t_reloop_cam.pl", "t/t_trace_two_hdr_cc.pl", "t/t_trace_two_port_cc.pl",
+    "t/t_reloop_cam.pl", "t/t_reloop_offset.pl", "t/t_reloop_offset_lim_63.pl",
+    "t/t_trace_two_hdr_cc.pl", "t/t_trace_two_port_cc.pl",
     "t/t_var_pins_sc_uint_biguint.pl", "t/t_hier_block_prot_lib.pl",
     "t/t_assert/t_property_fail_1.pl", "t/t_alw_split.pl", "t/t_flag_help.pl",
     "t/t_flag_xinitial_unique.pl", "t/t_clk_concat.pl", "t/t_assert_cover.pl",
