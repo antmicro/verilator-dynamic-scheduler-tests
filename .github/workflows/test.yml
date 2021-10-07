@@ -37,6 +37,12 @@ jobs:
       run: |
         verilator --version
 
+    - name: Build vcddiff
+      run: |
+        git clone https://github.com/veripool/vcddiff
+        make -C vcddiff
+        sudo cp -p vcddiff/vcddiff /usr/local/bin
+
     - name: Generate Robot Tests
       env:
         CC: gcc-10
