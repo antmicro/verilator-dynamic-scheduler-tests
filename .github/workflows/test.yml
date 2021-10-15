@@ -18,14 +18,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install libfl-dev git
-        sudo apt-get install gcc-10 g++-10
+        sudo apt-get install gcc-11 g++-11
         sudo apt-get install python3-pip python3-setuptools
         sudo pip3 install robotframework==3.2.2 robotframework-pabot
 
     - name: Build Verilator
       env:
-        CC: gcc-10
-        CXX: g++-10
+        CC: gcc-11
+        CXX: g++-11
       run: |
         cd verilator
         git show
@@ -45,13 +45,13 @@ jobs:
 
     - name: Generate Robot Tests
       env:
-        CC: gcc-10
-        CXX: g++-10
+        CC: gcc-11
+        CXX: g++-11
       run: ./gen_robot.py
     - name: Run Robot Tests
       env:
-        CC: gcc-10
-        CXX: g++-10
+        CC: gcc-11
+        CXX: g++-11
       run: pabot --processes $(($(nproc) + 1)) --verbose --testlevelsplit --noncritical should_fail --noncritical dist --noncritical opt --noncritical perf --noncritical file_grep --noncritical code_gen  robot_tests || true
 
     - name: Show Diff In Results
