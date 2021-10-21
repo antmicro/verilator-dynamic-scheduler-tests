@@ -2,3 +2,6 @@
 	path = verilator
 	url = git@github.com:antmicro/verilator-1.git
 	branch = dynamic-scheduler
+[submodule "tests/uart/verilog-uart"]
+	path = tests/uart/verilog-uart
+	url = https://github.com/alexforencich/verilog-uart.git
