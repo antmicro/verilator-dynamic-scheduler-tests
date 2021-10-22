@@ -35,6 +35,7 @@ SV_FILES="$SV_MAIN"
 if [[ "$TEST_NAME" == "uart" ]]; then
     UART_FILES=$TEST_DIR/verilog-uart/rtl/*
     SV_FILES="$SV_FILES ${UART_FILES[@]}"
+    VERILATOR_FLAGS="-Wno-WIDTH"
 fi
 
 OUT_DIR="$SCRIPT_DIR/out/$TEST_NAME"
@@ -46,7 +47,7 @@ mkdir -p $OUT_DIR
 # BUILD #
 #########
 
-verilator --output-split-cfuncs 1 --cc $SV_FILES -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
+verilator --output-split-cfuncs 1 $VERILATOR_FLAGS --cc $SV_FILES -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
 
 make -C "$OUT_DIR" -f Vtop.mk
 
