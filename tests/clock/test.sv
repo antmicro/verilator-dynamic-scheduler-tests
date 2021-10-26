@@ -17,11 +17,11 @@ module t;
 
    always @(posedge clk) begin
       cyc <= cyc + 1;
+      $write("[%0t] posedge; clk == %b\n", $time, clk);
       if (cyc == 10) begin
          $write("*-* All Finished *-*\n");
          $finish;
       end
-      $write("[%0t] posedge; clk == %b\n", $time, clk);
    end
 
 endmodule

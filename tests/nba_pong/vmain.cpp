@@ -5,14 +5,11 @@
 vluint64_t main_time = 0;
 vluint64_t new_time = 0;
 
-std::mutex mtx;
 double sc_time_stamp() {
-	std::unique_lock<std::mutex> lck(mtx);
 	return main_time;
 }
 
 void sc_time_stamp(double n) {
-	std::unique_lock<std::mutex> lck(mtx);
 	main_time = n;
 }
 

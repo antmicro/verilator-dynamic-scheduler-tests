@@ -15,7 +15,7 @@ with open("templates/builtin.robot", "r") as t:
     builtin = Template(t.read())
 
 test_cases = []
-timeout = "600s"
+timeout = "1h"
 
 if len(sys.argv) > 1:
     timeout_arg = sys.argv[1]
