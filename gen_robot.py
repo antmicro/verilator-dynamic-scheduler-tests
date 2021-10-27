@@ -116,7 +116,8 @@ tests_grep = {
     "t/t_trace_complex_params.pl", "t/t_prot_lib.pl",
     "t/t_hier_block_cmake.pl", "t/t_func_dotted_inl0.pl",
     "t/t_emit_memb_limit.pl", "t/t_time_vpi_1ms10ns.pl",
-    "t/t_func_dotted_inl2.pl", "t/t_foreach.pl", "t/t_protect_ids_key.pl"
+    "t/t_func_dotted_inl2.pl", "t/t_foreach.pl", "t/t_protect_ids_key.pl",
+    "t/t_xml_debugcheck.pl"
 }
 
 # tests for which debug output is checked, which may or may not change because
