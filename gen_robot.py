@@ -40,7 +40,7 @@ with open("robot_tests/dedicated.robot", "w") as t:
     t.write(suite.render(test_cases="\n".join(test_cases)))
 
 # tests related to optimization that could be non-functional now
-tests_opt = [
+tests_opt = {
     "t/t_case_huge.pl", "t/t_case_huge_prof.pl", "t/t_dedupe_clk_gate.pl",
     "t/t_merge_cond.pl", "t/t_var_life.pl", "t/t_mem_shift.pl",
     "t/t_inst_tree_inl0_pub1.pl", "t/t_inst_tree_inl0_pub1_norelcfuncs.pl",
@@ -49,12 +49,12 @@ tests_opt = [
     "t/t_alw_split.pl", "t/t_alw_reorder.pl", "t/t_merge_cond.pl",
     "t/t_dedupe_seq_logic.pl", "t/t_alw_split_rst.pl", "t/t_clk_gater.pl",
     "t/t_alw_nosplit.pl", "t/t_gate_chained.pl", "t/t_alw_noreorder.pl",
-    "t/t_unopt_combo_isolate.pl"
-]
+    "t/t_unopt_combo_isolate.pl", "t/t_flag_expand_limit.pl"
+}
 
 # tests related to performance, sometimes fail in the CI but not on a regular
 # machine
-tests_perf = [
+tests_perf = {
     "t/t_a3_selftest.pl", "t/t_debug_graph_test.pl", "t/t_case_huge.pl",
     "t/t_case_huge_prof.pl", "t/t_unopt_array_csplit.pl", "t/t_split_var_0.pl",
     "t/t_split_var_2_trace.pl", "t/t_math_signed.pl",
@@ -62,12 +62,12 @@ tests_perf = [
     "t/t_inst_tree_inl0_pub1.pl", "t/t_inst_tree_inl0_pub1_norelcfuncs.pl",
     "t/t_inst_tree_inl1_pub1.pl", "t/t_final.pl", "t/t_gen_genblk_noinl.pl",
     "t/t_gate_chained.pl", "t/t_flag_csplit_eval.pl"
-]
+}
 
 # tests that use $file_grep, they either look for some optimizations, specific
 # signal names or other things that may have changed with the dynamic scheduler
 # but should not be considered critical
-tests_grep = [
+tests_grep = {
     "t/t_sys_file_scan.pl", "t/t_trace_complex.pl",
     "t/t_unopt_combo_isolate_vlt.pl", "t/t_alw_splitord.pl",
     "t/t_cellarray.pl", "t/t_trace_two_port_sc.pl", "t/t_trace_two_dump_sc.pl",
@@ -116,15 +116,26 @@ tests_grep = [
     "t/t_trace_complex_params.pl", "t/t_prot_lib.pl",
     "t/t_hier_block_cmake.pl", "t/t_func_dotted_inl0.pl",
     "t/t_emit_memb_limit.pl", "t/t_time_vpi_1ms10ns.pl",
-    "t/t_func_dotted_inl2.pl", "t/t_foreach.pl"
-]
+    "t/t_func_dotted_inl2.pl", "t/t_foreach.pl", "t/t_protect_ids_key.pl"
+}
+
+# tests for which debug output is checked, which may or may not change because
+# of the dynamic scheduler, but it's not related to actual functionality
+tests_debug = {
+    "t/t_gen_upscope.pl", "t/t_verilated_debug.pl"
+}
+
+# tests that are supposed to fail
+tests_fail = {
+    "t/t_clk_latch.pl", "t/t_clk_latch_edgestyle.pl", "t/t_order_doubleloop.pl"
+}
 
 # tests that generate verilog debug outupts and compares with
 # already hardcoded files
-tests_code_gen = [
+tests_code_gen = {
     "t/t_debug_emitv.pl", 
     "t/t_cover_line_trace.pl"
-]
+}
 
 test_cases = []
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
@@ -143,11 +154,14 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
 
     if t in tests_grep:
         tags.append("file_grep")
+ 
+    if t in tests_debug:
+        tags.append("debug_out")
     
     if t in tests_code_gen:
         tags.append("code_gen")
 
-    if "bad" in t:
+    if t in tests_fail or "bad" in t:
         tags.append("should_fail")
     else:
         tags.append("should_pass")

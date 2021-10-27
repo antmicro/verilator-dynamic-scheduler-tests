@@ -52,7 +52,7 @@ jobs:
       env:
         CC: gcc-11
         CXX: g++-11
-      run: pabot --processes $(($(nproc) + 1)) --verbose --testlevelsplit --noncritical should_fail --noncritical dist --noncritical opt --noncritical perf --noncritical file_grep --noncritical code_gen  robot_tests || true
+      run: pabot --processes $(($(nproc) + 1)) --verbose --testlevelsplit --noncritical should_fail --noncritical dist --noncritical opt --noncritical perf --noncritical file_grep --noncritical debug_out --noncritical code_gen  robot_tests || true
 
     - name: Show Diff In Results
       run: |
