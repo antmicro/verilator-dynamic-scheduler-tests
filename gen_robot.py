@@ -15,7 +15,7 @@ with open("templates/builtin.robot", "r") as t:
     builtin = Template(t.read())
 
 test_cases = []
-timeout = "1h"
+timeout = "600s"
 
 if len(sys.argv) > 1:
     timeout_arg = sys.argv[1]
@@ -49,7 +49,9 @@ tests_opt = {
     "t/t_alw_split.pl", "t/t_alw_reorder.pl", "t/t_merge_cond.pl",
     "t/t_dedupe_seq_logic.pl", "t/t_alw_split_rst.pl", "t/t_clk_gater.pl",
     "t/t_alw_nosplit.pl", "t/t_gate_chained.pl", "t/t_alw_noreorder.pl",
-    "t/t_unopt_combo_isolate.pl", "t/t_flag_expand_limit.pl"
+    "t/t_unopt_combo_isolate.pl", "t/t_flag_expand_limit.pl",
+    "t/t_const_opt_cov.pl", "t/t_gate_ormux.pl", "t/t_func_crc.pl",
+    "t/t_const_opt_red.pl"
 }
 
 # tests related to performance, sometimes fail in the CI but not on a regular

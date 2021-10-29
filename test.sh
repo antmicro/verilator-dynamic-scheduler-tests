@@ -47,7 +47,7 @@ mkdir -p $OUT_DIR
 # BUILD #
 #########
 
-verilator --output-split-cfuncs 1 $VERILATOR_FLAGS --cc $SV_FILES -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
+verilator $VERILATOR_FLAGS --cc $SV_FILES -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
 
 make -C "$OUT_DIR" -f Vtop.mk
 
