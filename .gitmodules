@@ -5,3 +5,6 @@
 [submodule "tests/uart/verilog-uart"]
 	path = tests/uart/verilog-uart
 	url = https://github.com/alexforencich/verilog-uart.git
+[submodule "design_tests/swerv/Cores-SweRV"]
+	path = design_tests/swerv/Cores-SweRV
+	url = git@github.com:chipsalliance/Cores-SweRV.git
