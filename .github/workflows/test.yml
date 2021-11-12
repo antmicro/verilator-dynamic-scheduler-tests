@@ -101,8 +101,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apt-get update -qq
-        apt install -y google-perftools ninja-build
+        sudo apt-get update -qq
+        sudo apt install -y google-perftools ninja-build
 
     - name: Download binaries
       uses: actions/download-artifact@v2
