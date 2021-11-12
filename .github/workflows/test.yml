@@ -117,4 +117,4 @@ jobs:
       - name: Build & Test
         run: |
           export RV_ROOT=${PWD}/design_tests/swerv/Cores-SweRV
-          make -f ${RV_ROOT}/tools VERILATOR=${PWD}/verilator/bin/verilator
+          make -f ${RV_ROOT}/tools/Makefile VERILATOR=${PWD}/verilator/bin/verilator
