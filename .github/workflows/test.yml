@@ -33,6 +33,7 @@ jobs:
         ./configure
         make -j$(nproc)
         sudo make install
+        tar -cvf binaries.tar image
     - name: Verilator version
       run: |
         verilator --version
@@ -85,6 +86,13 @@ jobs:
         git commit -am "update ${{ github.sha }}"
         git push -u origin +HEAD:gh-pages
         rm -rf .git
+
+    - name: Upload binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: binaries
+        path: binaries.tar
+
 
   simple-system-sim:
     runs-on: ubuntu-latest
