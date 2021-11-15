@@ -46,7 +46,7 @@ jobs:
     - name: Swerv
       run: |
         export RV_ROOT=${PWD}/design_tests/swerv/Cores-SweRV
-        make -f ${RV_ROOT}/tools/Makefile VERILATOR=${PWD}/verilator/bin/verilator
+        make -f ${RV_ROOT}/tools/Makefile
 
     - name: Generate Robot Tests
       env:
