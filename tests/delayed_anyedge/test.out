@@ -2,9 +2,7 @@
 [40] clk=1
 [40] b <= 0
 [45] a <= 1
+[45] Checking if b == 0
 [55] b <= 1
-[55] Checking if b == 0
 [60] clk=0
-[80] Checking if b == 1
-[80] clk=1
-[80] b <= 0
+[70] Checking if b == 1
