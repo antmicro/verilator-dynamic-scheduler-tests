@@ -7,23 +7,18 @@ module t (/*AUTOARG*/
 
    initial begin
      $write("Starting with value == 0\n");
-     #2;
-     $write("Assigning 1 to value.\n");
+     #2 $write("Assigning 1 to value.\n");
      value = 1;
-     #1;
-     $write("Assigning 2 to value.\n");
+     #1 $write("Assigning 2 to value.\n");
      value = 2;
-     #1;
-     $write("Assigning 0 to value.\n");
+     #1 $write("Assigning 0 to value.\n");
      value = 0;
-     #1;
-     $write("Assigning 2 to value.\n");
+     #1 $write("Assigning 2 to value.\n");
      value = 2;
    end
 
    initial begin
-     #1;
-     $write("Waiting for value == 2...\n");
+     #1 $write("Waiting for value == 2...\n");
      wait(value == 2);
      $write("Waited for value == 2.\n");
      $write("Waiting for value < 2...\n");

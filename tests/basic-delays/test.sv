@@ -14,17 +14,13 @@ module t (/*AUTOARG*/
       // This way the order of the $write output is guaranteed. If two $write
       // calls occured at the same simulation time, any order would be
       // acceptable
-      #5;
-      $write("Simple 1\n");
-      #50;
-      $write("Simple 1 post delay\n");
+      #5 $write("Simple 1\n");
+      #50 $write("Simple 1 post delay\n");
    end
 
    initial begin
-      #75;
-      $write("Simple 2\n");
-      #70;
-      $write("Simple 2 post delay\n");
+      #75 $write("Simple 2\n");
+      #70 $write("Simple 2 post delay\n");
    end
 
    initial begin

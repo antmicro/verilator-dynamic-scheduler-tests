@@ -3,7 +3,7 @@ module t (/*AUTOARG*/
    clk
    );
    input clk;
-   event m_event, m_event_2;
+   event e1, e2;
    reg a=0;
 
    
@@ -14,7 +14,7 @@ module t (/*AUTOARG*/
          $write("Will trigger the event in #100\n");
          #100;
          $write("triggering!\n");
-         ->m_event;
+         ->e1;
      end
      join
    end
@@ -23,12 +23,11 @@ module t (/*AUTOARG*/
      fork
      begin
          $write("Will wait for the event here...\n");
-         @m_event;
-         a = 1;
+         @e1 a = 1;
          $write("Got the event!\n");
      end
      begin
-        @m_event_2;
+        @e2;
         $write("*-* All Finished *-*\n");
         $finish;
      end
@@ -36,10 +35,8 @@ module t (/*AUTOARG*/
    end
    
    always @(a) begin
-     if(a) begin
-           #100
-         ->m_event_2;
-        
+     if (a) begin
+         #100 ->e2;
      end
    end
    

@@ -20,21 +20,13 @@ module top (/*AUTOARG*/
       ready = 1'b1;
    end
    initial begin
-      #10;
-      clk = 0;
-      #10;
-      clk = 1;
-      #10;
-      clk = 0;
-      #10;
-      clk = 1;
-      #10;
-      clk = 0;
-      #10;
-      clk = 1;
-      #10;
-      clk = 0;
-      #10;
-      clk = 1;
+      #10 clk = 0;
+      #10 clk = 1;
+      #10 clk = 0;
+      #10 clk = 1;
+      #10 clk = 0;
+      #10 clk = 1;
+      #10 clk = 0;
+      #10 clk = 1;
    end
 endmodule

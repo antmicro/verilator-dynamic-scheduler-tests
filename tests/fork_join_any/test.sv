@@ -7,9 +7,7 @@ module t (/*AUTOARG*/
 
    initial begin
       fork
-         begin
-            $write("forked process 1\n");
-         end
+         $write("forked process 1\n");
          begin
             @cont;
             $write("forked process 2\n");

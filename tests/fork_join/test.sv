@@ -6,17 +6,12 @@ module t (/*AUTOARG*/
 
    initial begin
       fork
-         begin
-            $write("forked process\n");
-         end
-         begin
-            $write("forked process\n");
-         end
-         begin
-            $write("forked process\n");
-         end
+            #8 $write("[%0t] forked process 1\n", $time);
+            #4 $write("[%0t] forked process 2\n", $time);
+            #2 $write("[%0t] forked process 3\n", $time);
+            $write("[%0t] forked process 4\n", $time);
       join
-      $write("main process\n");
+      #8 $write("[%0t] main process\n", $time);
       $write("*-* All Finished *-*\n");
       $finish;
    end

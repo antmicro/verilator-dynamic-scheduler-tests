@@ -8,13 +8,13 @@ module t (/*AUTOARG*/
    event eventC;
 
    initial begin
-     #1;
+     #1
      $write("Triggering event A!\n");
      ->eventA;
-     #1;
+     #1
      $write("Triggering event B!\n");
      ->eventB;
-     #1;
+     #1
      $write("Triggering event C!\n");
      ->eventC;
    end
@@ -22,7 +22,7 @@ module t (/*AUTOARG*/
    initial begin
      for (int i = 0; i < 3; i++) begin
         $write("Waiting for event A, B, or C...\n");
-        @(eventA, eventB, eventC);
+        @(eventA, eventB, eventC)
         $write("Got the event!\n");
      end
      $write("*-* All Finished *-*\n");

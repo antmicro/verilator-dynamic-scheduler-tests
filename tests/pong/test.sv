@@ -11,28 +11,23 @@ module t (/*AUTOARG*/
    initial begin
        forever begin
            @ping;
-           #1;
-           $write("ping\n");
+           #1 $write("ping\n");
            ->pong;
        end
    end
 
    initial begin
        int cnt;
-       # 100;
-       ->ping;
+       #100 ->ping;
 
        forever begin
            @pong;
-           #1;
-           $write("pong\n");
+           #1 $write("pong\n");
            cnt++;
            if (cnt >= 10) begin
                $write("*-* All Finished *-*\n");
                $finish;
-           end else begin
-               ->ping;
-           end
+           end else ->ping;
        end
    end
 endmodule

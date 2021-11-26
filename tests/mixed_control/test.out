@@ -1,3 +1,5 @@
-[5] Got posedge sig or event
-[9] Got posedge sig or event
+[5] Got posedge sig1 or event
+[9] Got posedge sig1 or event
+[13] Got posedge sig1 or negedge sig2
+[17] Got posedge sig1 or negedge sig2
 *-* All Finished *-*
