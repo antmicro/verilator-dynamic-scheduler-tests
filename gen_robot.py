@@ -142,6 +142,7 @@ tests_code_gen = {
 
 test_cases = []
 for t in sorted(glob("verilator/test_regress/t/t_*pl")):
+    break # regression tests currently don't use UHDM, so skip them
     tags = []
 
     t = t[len("verilator/test_regress/"):]

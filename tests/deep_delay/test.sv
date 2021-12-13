@@ -9,7 +9,7 @@ module t;
     `define DEEP_DELAY(i, j) \
     task deep_delay``i; \
         $write("[%0t] entering depth %0d\n", $time, i); \
-        #1 deep_delay``j; \
+        #1 deep_delay``j(); \
         #1 $write("[%0t] leaving depth %0d\n", $time, i); \
     endtask
 

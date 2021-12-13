@@ -47,7 +47,9 @@ mkdir -p $OUT_DIR
 # BUILD #
 #########
 
-verilator $VERILATOR_FLAGS --cc $SV_FILES -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
+verilator/image/bin/surelog -sverilog -parse -elabuhdm $SV_FILES
+
+verilator $VERILATOR_FLAGS --cc --uhdm-ast slpp_all/surelog.uhdm -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN" -Wno-INFINITELOOP
 
 make -C "$OUT_DIR" -f Vtop.mk
 

@@ -14,12 +14,12 @@ module t;
         fork \
             begin \
                 $write("[%0t] starting process [%0d]\n", $time, i); \
-                #1 fork2_``j; \
+                #1 fork2_``j(); \
                 #1 $write("[%0t] ending process [%0d]\n", $time, i); \
             end \
             begin \
                 $write("[%0t] starting process [%0d]\n", $time, i); \
-                #1 fork2_``j; \
+                #1 fork2_``j(); \
                 #1 $write("[%0t] ending process [%0d]\n", $time, i); \
             end \
         join \
