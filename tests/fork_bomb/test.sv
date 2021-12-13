@@ -5,7 +5,7 @@ module t;
     // generate functions for a deep call stack
     `define FORK2_END(i) \
     task fork2_``i; \
-        $write("[%0t] at i=%0d\n", $time, i); \
+        $write("[%0t] at fork end\n", $time); \
         #1 counter++; \
     endtask
 
