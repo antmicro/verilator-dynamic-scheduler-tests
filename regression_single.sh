@@ -2,5 +2,5 @@
 
 set -e
 
-pushd "$1"
-./driver.pl "$2"
+cd $(dirname $0)/verilator/test_regress
+./driver.pl t/"$1"
