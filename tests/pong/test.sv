@@ -1,4 +1,3 @@
-/* verilator lint_off INFINITELOOP */
 module t (/*AUTOARG*/
    // Inputs
    clk
