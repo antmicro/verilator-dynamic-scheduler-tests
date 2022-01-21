@@ -32,10 +32,12 @@ check_file "$SV_MAIN" "SV source"
 check_file "$EXPECTED_OUT" "Expected output"
 
 SV_FILES="$SV_MAIN"
+VERILATOR_FLAGS=--dynamic-scheduler
+
 if [[ "$TEST_NAME" == "uart" ]]; then
     UART_FILES=$TEST_DIR/verilog-uart/rtl/*
     SV_FILES="$SV_FILES ${UART_FILES[@]}"
-    VERILATOR_FLAGS="-Wno-WIDTH"
+    VERILATOR_FLAGS="$VERILATOR_FLAGS -Wno-WIDTH"
 fi
 
 OUT_DIR="$SCRIPT_DIR/out/$TEST_NAME"
