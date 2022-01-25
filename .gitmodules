@@ -5,3 +5,6 @@
 [submodule "tests/uart/verilog-uart"]
 	path = tests/uart/verilog-uart
 	url = https://github.com/alexforencich/verilog-uart.git
+[submodule "ext_tests"]
+	path = ext_tests
+	url = https://github.com/verilator/verilator_ext_tests/

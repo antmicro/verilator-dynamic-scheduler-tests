@@ -14,6 +14,9 @@ with open("templates/dedicated.robot", "r") as t:
 with open("templates/builtin.robot", "r") as t:
     builtin = Template(t.read())
 
+with open("templates/ext_test.robot", "r") as t:
+    ext_test = Template(t.read())
+
 test_cases = []
 timeout = "600s"
 
@@ -28,6 +31,7 @@ if len(sys.argv) > 1:
 try:
     os.makedirs("robot_tests/dedicated", exist_ok=True)
     os.makedirs("robot_tests/builtin", exist_ok=True)
+    os.makedirs("robot_tests/ext_tests", exist_ok=True)
 except Exception as e:
     print("Unable to create directory ", e)
     sys.exit(1)
@@ -137,7 +141,7 @@ tests_fail = {
 # tests that generate verilog debug outupts and compares with
 # already hardcoded files
 tests_code_gen = {
-    "t_debug_emitv.pl", 
+    "t_debug_emitv.pl",
     "t_cover_line_trace.pl"
 }
 
@@ -158,10 +162,10 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
 
     if t in tests_grep:
         tags.append("file_grep")
- 
+
     if t in tests_debug:
         tags.append("debug_out")
-    
+
     if t in tests_code_gen:
         tags.append("code_gen")
 
@@ -174,4 +178,13 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
         builtin.render(test=t, tags="    ".join(tags), timeout=timeout))
 
 with open("robot_tests/builtin.robot", "w") as t:
+    t.write(suite.render(test_cases="\n".join(test_cases)))
+
+test_cases = []
+for t in sorted(glob("ext_tests/t/t_*pl")):
+    t = t[len("ext_tests/t/"):]
+    test_cases.append(
+        ext_test.render(test=t, timeout=timeout))
+
+with open("robot_tests/ext_tests.robot", "w") as t:
     t.write(suite.render(test_cases="\n".join(test_cases)))
