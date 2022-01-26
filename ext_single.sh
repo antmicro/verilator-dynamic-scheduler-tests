@@ -6,4 +6,4 @@ ROOT=$(dirname $(realpath $0))
 export VERILATOR_ROOT=$ROOT/verilator
 
 cd $ROOT/ext_tests
-t/$1 --dynamic-scheduler --threads `nproc`
+t/$1 --dynamic-scheduler
