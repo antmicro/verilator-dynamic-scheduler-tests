@@ -1,0 +1,22 @@
+[1] posedge; clk == 1
+[2] negedge; clk == 0
+[3] posedge; clk == 1
+[4] negedge; clk == 0
+[5] posedge; clk == 1
+[6] negedge; clk == 0
+[7] posedge; clk == 1
+[8] negedge; clk == 0
+[9] posedge; clk == 1
+[10] negedge; clk == 0
+[11] posedge; clk == 1
+[12] negedge; clk == 0
+[13] posedge; clk == 1
+[14] negedge; clk == 0
+[15] posedge; clk == 1
+[16] negedge; clk == 0
+[17] posedge; clk == 1
+[18] negedge; clk == 0
+[19] posedge; clk == 1
+[20] negedge; clk == 0
+[21] posedge; clk == 1
+*-* All Finished *-*

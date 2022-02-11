@@ -1,7 +1,7 @@
 module delay_anyedge ();
     reg flag_a;
     reg flag_b;
-    logic clk = 1;
+    logic clk = 0;
     initial
       forever
       begin
@@ -13,10 +13,10 @@ module delay_anyedge ();
     begin
         $display("[%0t] b <= 0", $time);
         flag_b <= 1'b0;
-        #5;
+        #10;
         $display("[%0t] a <= 1", $time);
         flag_a <= 1'b1;
-        #10;
+        #20;
         $display("[%0t] b <= 1", $time);
         flag_b <= 1'b1;
     end
@@ -24,10 +24,12 @@ module delay_anyedge ();
     begin
         $display("[%0t] Checking if b == 0", $time);
         if (flag_b !== 1'b0) $stop;
-        #25;
+        #30;
         $display("[%0t] Checking if b == 1", $time);
+        $display("[%0t] b == %b", $time, flag_b);
         if (flag_b !== 1'b1) $stop;
-        #1;
+        #60;
         $finish;
     end
 endmodule
+
