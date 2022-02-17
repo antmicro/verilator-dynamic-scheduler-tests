@@ -5,8 +5,10 @@ module t(/*AUTOARG*/
    input clk;
 
    logic clk_copy;
+   logic inv_clk;
 
    assign clk_copy = clk;
+   assign inv_clk = ~clk;
 
    initial begin
       $write("[%0t] start; clk == %b\n", $time, clk);
@@ -20,7 +22,7 @@ module t(/*AUTOARG*/
       $write("[%0t] negedge; clk == %b\n", $time, clk);
       @(posedge clk);
       $write("[%0t] posedge; clk == %b\n", $time, clk);
-      @(posedge clk);
+      @(negedge inv_clk);
       $write("[%0t] posedge; clk == %b\n", $time, clk);
       @(posedge clk, negedge clk_copy);
       $write("[%0t] posedge or negedge; clk == %b\n", $time, clk);
