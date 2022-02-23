@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 		if (main_time != -1) {
 			top->eval();
 		}
-		main_time = top->timeSlotsEarliestTime();
+		main_time = top->nextTimeSlot();
 	}
 	top->final();
 	delete top;

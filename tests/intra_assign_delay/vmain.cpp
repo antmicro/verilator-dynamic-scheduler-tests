@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 	Vtop *top = new Vtop;
 	while (!Verilated::gotFinish()) {
 		top->eval();
-		main_time = top->timeSlotsEarliestTime();
+		main_time = top->nextTimeSlot();
 	}
 	top->final();
 	delete top;
