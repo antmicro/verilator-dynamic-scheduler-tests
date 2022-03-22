@@ -23,19 +23,12 @@ module t (/*AUTOARG*/
       #70 $write("Simple 2 post delay\n");
    end
 
-   initial begin
-      forever begin
-         #10 clk_generated = ~clk_generated;
-      end
-   end
+   initial forever #10 clk_generated = ~clk_generated;
 
    always @ (posedge clk_generated) begin
       cyc = cyc + 1;
-      if (cyc % 2 == 0) begin
-         $write("+\n");
-      end else begin
-         $write("-\n");
-      end
+      if (cyc % 2 == 0) $write("+\n");
+      else $write("-\n");
 
       if (cyc > 20) begin
          $write("*-* All Finished *-*\n");
