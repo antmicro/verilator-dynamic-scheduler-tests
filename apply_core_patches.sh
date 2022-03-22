@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 function patch {
     git -C ext_tests/submodules/Cores-$1 apply ../../../patches/$1.patch
