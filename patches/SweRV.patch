@@ -26,9 +26,18 @@ index 6500a68..a603019 100644
  
  
 diff --git a/testbench/test_tb_top.cpp b/testbench/test_tb_top.cpp
-index 899caf1..721fbe3 100644
+index 899caf1..6908614 100644
 --- a/testbench/test_tb_top.cpp
 +++ b/testbench/test_tb_top.cpp
+@@ -22,7 +22,7 @@
+ #include "verilated_vcd_c.h"
+ 
+ 
+-vluint64_t main_time = 0;
++double main_time = 0;
+ 
+ double sc_time_stamp () {
+  return main_time;
 @@ -50,8 +50,7 @@ int main(int argc, char** argv) {
  #if VM_TRACE
        tfp->dump (main_time);
