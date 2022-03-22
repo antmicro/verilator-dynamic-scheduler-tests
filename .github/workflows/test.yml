@@ -50,6 +50,10 @@ jobs:
         CC: gcc-11
         CXX: g++-11
       run: ./gen_robot.py
+
+    - name: Apply ext_tests core patches
+      run: ./apply_core_patches.sh
+
     - name: Run Robot Tests
       env:
         CC: gcc-11
