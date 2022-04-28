@@ -11,67 +11,54 @@ if [[ ! -d "$1" ]]; then
   exit 1
 fi
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-TEST_DIR=$(realpath "$1")
-TEST_NAME=$(basename "$TEST_DIR")
-
-CPP_MAIN="$TEST_DIR/vmain.cpp"
-SV_MAIN="$TEST_DIR/test.sv"
-EXPECTED_OUT="$TEST_DIR/test.out"
+export REPO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export TEST_DIR=$(realpath "$1")
+TEST_SUITE_NAME=$(basename "$TEST_DIR")
 
 function check_file() {
-  if [[ ! -e "$1" ]]; then
-    echo "$2 for $TEST_NAME missing"
-    exit 1
-  fi
+    if [[ ! -e "$1" ]]; then
+        echo "$3 for $2 missing"
+        exit 1
+    fi
 }
 
-check_file "$CPP_MAIN" "CPP source"
-check_file "$SV_MAIN" "SV source"
-check_file "$EXPECTED_OUT" "Expected output"
+# For each *.f file in test dir
+for TEST_FILE in $TEST_DIR/*.f; do
+    TEST_NAME=$(basename ${TEST_FILE%.*})
+    EXPECTED_OUT="${TEST_FILE%.*}.out"
+    check_file $EXPECTED_OUT "$TEST_SUITE_NAME/$TEST_NAME" "Expected output"
 
-SV_FILES="$SV_MAIN"
-VERILATOR_FLAGS=--dynamic
+    OUT_DIR="$REPO_DIR/out/$TEST_SUITE_NAME/$TEST_NAME"
+    ACTUAL_OUT="$OUT_DIR/output"
+    mkdir -p $OUT_DIR
 
-if [[ "$TEST_NAME" == "uart" ]]; then
-    UART_FILES=$TEST_DIR/verilog-uart/rtl/*
-    SV_FILES="$SV_FILES ${UART_FILES[@]}"
-    VERILATOR_FLAGS="$VERILATOR_FLAGS -Wno-WIDTH"
-fi
+    #########
+    # BUILD #
+    #########
+    verilator --dynamic --cc -f $TEST_FILE -Mdir "$OUT_DIR" --prefix Vtop --exe
 
-OUT_DIR="$SCRIPT_DIR/out/$TEST_NAME"
-ACTUAL_OUT="$OUT_DIR/output"
+    make -C "$OUT_DIR" -f Vtop.mk -j`nproc` #OPT="-g -Og"
 
-mkdir -p $OUT_DIR
-
-#########
-# BUILD #
-#########
-
-verilator $VERILATOR_FLAGS --cc $SV_FILES -Mdir "$OUT_DIR" --prefix Vtop --exe -o vmain "$CPP_MAIN"
-
-make -C "$OUT_DIR" -f Vtop.mk
-
-################
-# RUN & VERIFY #
-################
-
-if [[ -z "$2" ]]; then
-  $OUT_DIR/vmain | tee "$ACTUAL_OUT"
-  echo -n
-  if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
-    echo "Output is different than expected!"
-    exit 1
-  fi
-else
-  for i in $(seq 1 $2); do
-    echo "==> Test run $i"
-    $OUT_DIR/vmain | tee "$ACTUAL_OUT"
-    echo -n
-    if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
-      echo "Output is different than expected!"
-      exit 1
+    ################
+    # RUN & VERIFY #
+    ################
+    echo "====== Testing ${TEST_SUITE_NAME}/$TEST_NAME ======"
+    if [[ -z "$2" ]]; then
+        $OUT_DIR/Vtop | tee "$ACTUAL_OUT"
+        echo -n
+        if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
+            echo "Output is different than expected!"
+            exit 1
+        fi
+    else
+        for i in $(seq 1 $2); do
+            echo "==> Test run $i"
+            $OUT_DIR/Vtop | tee "$ACTUAL_OUT"
+            echo
+            if [[ ! "$(cat "$ACTUAL_OUT")" == *"$(cat "$EXPECTED_OUT")"* ]]; then
+                echo "Output is different than expected!"
+                exit 1
+            fi
+        done
     fi
-  done
-fi
+done
