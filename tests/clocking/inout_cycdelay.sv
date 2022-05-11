@@ -34,11 +34,7 @@ module tb;
          cb.D <= '0;
          ##2
          for (int i = 1; i <= WIDTH; i++) begin
-`ifdef VERILATOR
-            @(posedge clk)
-`else
             ##1
-`endif
             cb.D <= 1<<i;
          end 
          ##4

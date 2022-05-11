@@ -7,5 +7,5 @@ module dff #(
     input logic [WIDTH-1:0] D, 
     output logic [WIDTH-1:0] Q
 );
-   always @(posedge clk) Q = #DELAY D;
+   always @(posedge clk) #DELAY Q = D;
 endmodule

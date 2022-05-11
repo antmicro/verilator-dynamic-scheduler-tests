@@ -32,16 +32,13 @@ module tb;
          $display("  output skew: #%0d", OUTPUT_SKEW);
          $display("================\n");
          cb.D <= '0;
-         ##2
+         //##2
          for (int i = 1; i <= WIDTH; i++) begin
-`ifdef VERILATOR
             @(posedge clk)
-`else
-            ##1
-`endif
+            //##1
             cb.D <= 1<<i;
          end 
-         ##4
+         //##4
          $finish;
       end
 

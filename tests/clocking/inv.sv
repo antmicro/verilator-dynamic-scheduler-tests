@@ -7,8 +7,5 @@ module inv #(
     input logic [WIDTH-1:0] A, 
     output logic [WIDTH-1:0] Q
 );
-   always @(posedge clk) begin
-       Q = A;
-       #DELAY Q = ~A;
-   end
+   always @(posedge clk) #DELAY Q = ~A;
 endmodule
