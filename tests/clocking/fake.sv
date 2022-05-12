@@ -28,7 +28,7 @@ module tb;
        logic [WIDTH-1:0] Q;
    } cb;
 
-   assign #OUTPUT_SKEW D = cb.D;
+   always @(posedge clk) D = #OUTPUT_SKEW cb.D;
 
    typedef struct packed {
        logic[WIDTH-1:0] Q;
