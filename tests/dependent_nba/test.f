@@ -1,1 +1,1 @@
-$TEST_DIR/test.sv $REPO_DIR/src/main_old.cpp
+$TEST_DIR/test.sv $REPO_DIR/src/main.cpp --timing

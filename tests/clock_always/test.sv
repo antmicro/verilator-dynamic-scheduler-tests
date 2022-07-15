@@ -1,5 +1,4 @@
 module t;
-   /* verilator lint_off UNOPTFLAT */
    logic clk = 0;
    int   cyc = 0;
 

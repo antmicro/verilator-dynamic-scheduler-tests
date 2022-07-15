@@ -1,1 +1,1 @@
-$TEST_DIR/test.sv $REPO_DIR/src/main_new.cpp
+$TEST_DIR/test.sv --main --timing -Wno-INITIALDLY

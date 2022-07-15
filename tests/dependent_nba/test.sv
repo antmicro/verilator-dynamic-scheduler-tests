@@ -13,7 +13,7 @@ module t(clk);
          a[7] <= 1'b0;
       end
       else if (cyc == 1) begin
-         $write("a = %x\n", a);
+         #1 $write("a = %x\n", a);
          if (a != 8'h7F) $stop;
       end
       else if (cyc == 2) begin

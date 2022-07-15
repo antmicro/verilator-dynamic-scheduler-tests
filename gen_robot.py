@@ -151,6 +151,9 @@ for t in sorted(glob("verilator/test_regress/t/t_*pl")):
 
     t = t[len("verilator/test_regress/t/"):]
 
+    if 'timing' in t: # timing tests are dedicated
+        tags.append("dedicated")
+
     if t in tests_opt:
         tags.append("opt")
 
@@ -182,6 +185,7 @@ with open("robot_tests/builtin.robot", "w") as t:
 
 test_cases = []
 for t in sorted(glob("ext_tests/t/t_*pl")):
+    if 't_coverage_example' in t: continue  # doesn't work with V5
     t = t[len("ext_tests/t/"):]
     test_cases.append(
         ext_test.render(test=t, timeout=timeout))

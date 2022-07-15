@@ -20,5 +20,5 @@ module t;
            end else ->ping;
        end
 
-   initial ->ping;
+   initial #1 ->ping;
 endmodule

@@ -1,1 +1,1 @@
--Wno-WIDTH $TEST_DIR/test.sv $TEST_DIR/verilog-uart/rtl/uart.v $TEST_DIR/verilog-uart/rtl/uart_rx.v $TEST_DIR/verilog-uart/rtl/uart_tx.v $REPO_DIR/src/main_new.cpp
+-Wno-WIDTH $TEST_DIR/test.sv $TEST_DIR/verilog-uart/rtl/uart.v $TEST_DIR/verilog-uart/rtl/uart_rx.v $TEST_DIR/verilog-uart/rtl/uart_tx.v --main --timing
